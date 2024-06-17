@@ -27,12 +27,33 @@ const PostItem = () => {
 
     console.log(posts);
 
+    const dateFormat = (date: string): string => {
+        let d:Date = new Date(date);
+        return [d.getMonth() + 1,
+                d.getDate(),
+                d.getFullYear()].join('/') + ' ' +
+            [d.getHours(),
+                d.getMinutes(),
+                d.getSeconds()].join(':');
+    };
+
     return (
-        <div className="card" style={{width: "18rem"}}>
+        <div className="row">
             {posts.map(post => (
-                <div key={post._id} className="card-body">
-                    <h5 className="card-title">{post.author}</h5>
-                    <p className="card-text">{post.message}</p>
+                <div key={post._id} className="col-md-6 mb-4 mt-3">
+                    <div className="card border border-primary shadow p-3 mb-5 bg-body-tertiary" style={{height:'70%'}}>
+                        <div className="card-body">
+                            <div className="row">
+                                <div className="col-md-8">
+                                    <h5 className="card-title text-primary">{post.author}</h5>
+                                </div>
+                                <div className="col-md-4">
+                                    <p className="card-text text-muted">{dateFormat(post.datetime)}</p>
+                                </div>
+                            </div>
+                            <p className="card-text">{post.message}</p>
+                        </div>
+                    </div>
                 </div>
             ))}
         </div>

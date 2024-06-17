@@ -35,6 +35,7 @@ const Form = () => {
             <div className="mb-3">
                 <label className="form-label">Admin</label>
                 <input required
+                       style={{cursor: "pointer"}}
                        type="text"
                        className="form-control"
                        aria-describedby="Write your name please"
@@ -44,6 +45,7 @@ const Form = () => {
             <div className="mb-3">
                 <label className="form-label">Message</label>
                 <input required
+                       style={{cursor: "pointer"}}
                        type="text"
                        className="form-control"
                        name="message"
