@@ -1,5 +1,7 @@
 import {useEffect, useState} from "react";
 import {Messages} from "../../types.ts";
+import SharkImage from "../../assets/shark.png";
+
 const urlGet = "http://146.185.154.90:8000/messages";
 
 const PostItem = () => {
@@ -41,17 +43,17 @@ const PostItem = () => {
         <div className="row">
             {posts.map(post => (
                 <div key={post._id} className="col-md-6 mb-4 mt-3">
-                    <div className="card border border-primary shadow p-3 mb-5 bg-body-tertiary" style={{height:'70%'}}>
+                    <div className="card border border-primary shadow p-3 mb-5 bg-body-tertiary">
                         <div className="card-body">
-                            <div className="row">
-                                <div className="col-md-8">
-                                    <h5 className="card-title text-primary">{post.author}</h5>
-                                </div>
-                                <div className="col-md-4">
-                                    <p className="card-text text-muted">{dateFormat(post.datetime)}</p>
+                            <div className="d-flex mb-3 col-md-6">
+                                <img alt="icon" src={SharkImage}
+                                     style={{height: '80px', width: '80px', marginRight: '10px'}} className="me-5"/>
+                                <div className="d-flex justify-content-between">
+                                    <h5 className="card-title text-primary mb-0 me-5 ms-5">{post.author}</h5>
+                                    <p className="card-text text-muted mb-0 ms-5">{dateFormat(post.datetime)}</p>
                                 </div>
                             </div>
-                            <p className="card-text">{post.message}</p>
+                            <p className="card-text text-center">{post.message}</p>
                         </div>
                     </div>
                 </div>
