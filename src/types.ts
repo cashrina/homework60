@@ -4,3 +4,8 @@ export interface Messages {
     author: string,
     datetime: string,
 }
+
+export interface FormState {
+    message: string,
+    author: string,
+}

@@ -1,19 +1,7 @@
-import {Messages} from "../../types.ts";
 import React, {useState} from "react";
+import {FormState} from "../../types.ts";
 
-
-interface FormProps {
-    onsubmit: (message:Messages) => void;
-    method: string,
-    body: string,
-}
-
-interface FormState {
-    message: string,
-    author: string,
-}
-
-const Form: React.FC<FormProps> = ({onsubmit}) => {
+const Form = () => {
     const [authorMessage, setAuthorMessage] = useState<FormState>({
         message: '',
         author: '',
@@ -40,14 +28,14 @@ const Form: React.FC<FormProps> = ({onsubmit}) => {
         } catch (e) {
             console.error(e);
         }
-
     };
 
     return (
         <form onSubmit={onFormSubmit}>
             <div className="mb-3">
                 <label className="form-label">Admin</label>
-                <input type="text"
+                <input required
+                       type="text"
                        className="form-control"
                        aria-describedby="Write your name please"
                        name="author" onChange={changeMessage}/>
@@ -55,7 +43,11 @@ const Form: React.FC<FormProps> = ({onsubmit}) => {
             </div>
             <div className="mb-3">
                 <label className="form-label">Message</label>
-                <input type="text" className="form-control" name="message" onChange={changeMessage}/>
+                <input required
+                       type="text"
+                       className="form-control"
+                       name="message"
+                       onChange={changeMessage}/>
                 <div className="form-text">Write message please.</div>
             </div>
             <button type="submit" className="btn btn-outline-primary">Submit</button>
